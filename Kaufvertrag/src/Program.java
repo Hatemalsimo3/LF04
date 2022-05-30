@@ -3,6 +3,8 @@ import businessObjects.Kaufvertrag;
 import businessObjects.Vertragspartner;
 import businessObjects.Ware;
 
+//Testkommentar
+
 public class Program {
 
 	public static void main(String[] args) {
