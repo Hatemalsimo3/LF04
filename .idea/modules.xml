@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Kaufvertrag/Kaufvertrag.iml" filepath="$PROJECT_DIR$/Kaufvertrag/Kaufvertrag.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kaufvertrag2/Kaufvertrag2.iml" filepath="$PROJECT_DIR$/Kaufvertrag2/Kaufvertrag2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LF04.iml" filepath="$PROJECT_DIR$/LF04.iml" />
+    </modules>
+  </component>
+</project>
