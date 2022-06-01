@@ -80,12 +80,21 @@ public class Ware {
 		return besonderheitenListe;
 	}
 
+
+	public void setBesonderheitenListe(ArrayList<String> besonderheitenListe) {
+		this.besonderheitenListe = besonderheitenListe;
+	}
+
 	/**
 	 * Gibt die Liste der Mängel der Ware aus.
 	 * @return	Die Liste der Mängel der Ware.
 	 */
 	public ArrayList<String> getMaengelListe() {
 		return maengelListe;
+	}
+
+	public void setMaengelListe(ArrayList<String> maengelListe) {
+		this.maengelListe = maengelListe;
 	}
 
 	public int getWarenNR() {
@@ -108,6 +117,6 @@ public class Ware {
 		text += "\n\t\tBesonderheiten: " + besonderheitenListe;
 		text += "\n\t\tMängel: " + maengelListe;
 		return text;
-	}
-	
-}
+	}}
+
+

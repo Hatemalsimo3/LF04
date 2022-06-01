@@ -88,7 +88,7 @@ public class Waredao {
 
     }
 
-    public void reas() {
+    public void read() {
 
         ArrayList<Ware> wareArrayList = null;
         Connection connection = null;
@@ -102,7 +102,7 @@ public class Waredao {
 
             //SQL-Abfrage erstellen
 
-            String sql = "SELECT* FROM Vertragspartner";
+            String sql = "SELECT* FROM Waren";
             preparedStatement = connection.prepareStatement(sql);
 
             // SQL - Abfrage erstellen
@@ -176,12 +176,107 @@ public class Waredao {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
             String sql="DELETE FROM Waren Where warenNr?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, warenNr);
+            preparedStatement.setInt(1, warenNr);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public void update( Ware ware) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String besonderheitenString;
+        String mangellist;
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "UPDATE waren SET Bezeichnung=?,Beschreibung=?,Preis=?,Besondeheiten =?,Maengel=? WHERE wareNR = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, ware.getBezeichnung());
+            preparedStatement.setString(2, ware.getBeschreibung());
+            preparedStatement.setDouble(3,ware.getPreis());
+            besonderheitenString=ware.getBesonderheitenListe().toString(); // Array in String umgewandelt
+            preparedStatement.setString(4,besonderheitenString);
+            mangellist=ware.getMaengelListe().toString();
+            preparedStatement.setString(5,mangellist);
+            preparedStatement.setInt(6,ware.getWarenNR());
+
+            preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            } finally {
+
+                try {
+
+                    connection.close();
+
+                } catch (SQLException throwables) {
+
+                    throwables.printStackTrace();
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    public Ware create(Ware ware) throws Exception {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String besonderheit;
+        String maengel = null;
+
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            //SQL-Abfrage erstellen
+            String sql = "INSERT INTO vertragspartner (Bezeichnung, Bschreibung, Preis, Besonderheiten, Mangel, warenNR) VALUES (?,?,?,?,?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, ware.getBezeichnung());
+            preparedStatement.setString(2, ware.getBeschreibung());
+            preparedStatement.setDouble(3, ware.getPreis());
+            besonderheit=ware.getBesonderheitenListe().toString();
+
+            preparedStatement.setString(4,besonderheit);
+
+            preparedStatement.setString(5, maengel);
+            preparedStatement.setInt(6, ware.getWarenNR());
+            
+            //SQL-Abfrage ausführen
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            throw new Exception("Doppelte ausweisnummer, Der vertragspartner mit der ausweisnummer " + ware.getWarenNR());
+        }
+        finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return ware;
+    }
+
+
+
+
 }
 
 
