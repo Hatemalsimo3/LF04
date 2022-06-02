@@ -10,22 +10,30 @@ import java.util.ArrayList;
 
 public class testDao {
     public static void main(String[] args) throws Exception {
-        VertragspartnerDao vertragspartnerDao=new VertragspartnerDao();
-        ArrayList<Vertragspartner>vertragspartnerArrayList=new  VertragspartnerDao().read();
+
+        VertragspartnerDao vertragspartnerDao=new VertragspartnerDao();               //.........................................Read
+        ArrayList<Vertragspartner>vertragspartnerArrayList= vertragspartnerDao.read();
         for (Vertragspartner v : vertragspartnerArrayList) {
             System.out.println(v);
         }
 
-        Vertragspartner vertragspartner1=new Vertragspartner("Hatem","Alsimo");
-        vertragspartner1.setAdresse(new Adresse("Luneplate","12345","12112","Bremen"));
-        vertragspartner1.setAusweisNr("Hatem3");
-        vertragspartnerDao.create(vertragspartner1);
+        //.....................................................................................................  Creat
+      Vertragspartner vertragspartner1=new Vertragspartner("Hatem","Alsimo");
+      vertragspartner1.setAdresse(new Adresse("Luneplate","12345","12112","Bremen"));
 
+      vertragspartnerDao.Delet("Hatem3");
+      //....................................................................................................... Delet
 
-        Waredao waredao=new Waredao();
-        Ware ware=waredao.read(1);
-        System.out.println(ware);
-        waredao.Delet(2);
+      //..................................................................................................... ware
+
+      Waredao waredao=new Waredao();
+      Ware ware=waredao.read(1);
+      System.out.println(ware);
+      Ware ware1=new Ware(123,"Auto",1);
+      ware.setBeschreibung(" Kann gut fahren");
+
+      //......................................................................................
+
 
 
     }

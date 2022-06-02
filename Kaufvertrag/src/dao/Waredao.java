@@ -174,7 +174,7 @@ public class Waredao {
         PreparedStatement preparedStatement=null;
         try{
             connection = DriverManager.getConnection(CONNECTIONSTRING);
-            String sql="DELETE FROM Waren Where warenNr?";
+            String sql="DELETE FROM Waren Where warenNr = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, warenNr);
             preparedStatement.executeUpdate();
@@ -235,21 +235,19 @@ public class Waredao {
     public Ware create(Ware ware) throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String besonderheit;
+        String besonderheit= null;
         String maengel = null;
 
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
             //SQL-Abfrage erstellen
-            String sql = "INSERT INTO vertragspartner (Bezeichnung, Bschreibung, Preis, Besonderheiten, Mangel, warenNR) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO vertragspartner (WarenNR,Bezeichnung, Bschreibung, Preis, Besonderheiten, Maengel ) VALUES (?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, ware.getBezeichnung());
             preparedStatement.setString(2, ware.getBeschreibung());
             preparedStatement.setDouble(3, ware.getPreis());
             besonderheit=ware.getBesonderheitenListe().toString();
-
             preparedStatement.setString(4,besonderheit);
-
             preparedStatement.setString(5, maengel);
             preparedStatement.setInt(6, ware.getWarenNR());
             

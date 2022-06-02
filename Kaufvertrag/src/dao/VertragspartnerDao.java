@@ -221,6 +221,7 @@ public class VertragspartnerDao {
             }
         }
     }
+
     public Vertragspartner create(Vertragspartner vertragspartner) throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -228,16 +229,18 @@ public class VertragspartnerDao {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
 
             //SQL-Abfrage erstellen
-,
+            String sql = "INSERT INTO vertragspartner (AusweisNr,Vorname, Nachname, Strasse, HausNr, Plz, Ort) VALUES (?,?,?,?,?,?,?)";
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, vertragspartner.getVorname());
-            preparedStatement.setString(2, vertragspartner.getNachname());
-            preparedStatement.setString(3, vertragspartner.getAdresse().getStrasse());
-            preparedStatement.setString(4, vertragspartner.getAdresse().getHausNr());
-            preparedStatement.setString(5, vertragspartner.getAdresse().getPlz());
-            preparedStatement.setString(6, vertragspartner.getAdresse().getOrt());
-            preparedStatement.setString(7, vertragspartner.getAusweisNr());
+
+            preparedStatement.setString(1, vertragspartner.getAusweisNr());
+            preparedStatement.setString(2, vertragspartner.getVorname());
+            preparedStatement.setString(3, vertragspartner.getNachname());
+            preparedStatement.setString(4, vertragspartner.getAdresse().getStrasse());
+            preparedStatement.setString(5, vertragspartner.getAdresse().getHausNr());
+            preparedStatement.setString(6, vertragspartner.getAdresse().getPlz());
+            preparedStatement.setString(7, vertragspartner.getAdresse().getOrt());
+
             //SQL-Abfrage ausführen
 
             preparedStatement.executeUpdate();
@@ -254,20 +257,10 @@ public class VertragspartnerDao {
                     connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
-
                 }
             }
         }
         return vertragspartner;
-
     }
-
-
-
 }
-
-
-
-
-
 
