@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kaufvertrag/Kaufvertrag.iml" filepath="$PROJECT_DIR$/Kaufvertrag/Kaufvertrag.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Kaufvertrag2/Kaufvertrag2.iml" filepath="$PROJECT_DIR$/Kaufvertrag2/Kaufvertrag2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Thema/Kaufvertrag2.iml" filepath="$PROJECT_DIR$/Thema/Kaufvertrag2.iml" />
       <module fileurl="file://$PROJECT_DIR$/LF04.iml" filepath="$PROJECT_DIR$/LF04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Thema/Thema.iml" filepath="$PROJECT_DIR$/Thema/Thema.iml" />
     </modules>
   </component>
 </project>

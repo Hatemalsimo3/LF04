@@ -222,16 +222,10 @@ public class Waredao {
                 } catch (SQLException throwables) {
 
                     throwables.printStackTrace();
-
                 }
-
             }
-
         }
-
     }
-
-
     public Ware create(Ware ware) throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
