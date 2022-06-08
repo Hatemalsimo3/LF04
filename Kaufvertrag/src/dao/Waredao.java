@@ -190,7 +190,7 @@ public class Waredao {
         String mangellist;
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
-            String sql = "UPDATE waren SET Bezeichnung=?,Beschreibung=?,Preis=?,Besondeheiten =?,Maengel=? WHERE wareNR = ?";
+            String sql = "UPDATE waren SET Bezeichnung=?,Beschreibung=?,Preis=?,Besonderheiten =?,Maengel=? WHERE wareNR = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, ware.getBezeichnung());
             preparedStatement.setString(2, ware.getBeschreibung());

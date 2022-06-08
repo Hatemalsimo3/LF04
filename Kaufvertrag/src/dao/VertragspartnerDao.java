@@ -194,7 +194,7 @@ public class VertragspartnerDao {
 
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
-            String sql = "UPDATE Vertragspartner SET Vorname =?,Nachname=?,Straße=?,HausNr=?,Plz=?,Ort=?WHERE Ausweisnummer=?";
+            String sql = "UPDATE Vertragspartner SET Vorname =?,Nachname=?,Strasse=?,HausNr=?,Plz=?,Ort=?WHERE AusweisNR=?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, vertragspartner.getVorname());
             preparedStatement.setString(2, vertragspartner.getNachname());
